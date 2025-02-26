@@ -6,6 +6,8 @@
 #include <esp_log.h>
 #include <ml307_mqtt.h>
 #include <ml307_udp.h>
+#include <ec800_mqtt.h>
+#include <ec800_udp.h>
 #include <cstring>
 #include <arpa/inet.h>
 #include "assets/lang_config.h"
@@ -50,7 +52,7 @@ bool MqttProtocol::StartMqttClient() {
     }
 
     mqtt_ = Board::GetInstance().CreateMqtt();
-    mqtt_->SetKeepAlive(90);
+    // mqtt_->SetKeepAlive(90);
 
     mqtt_->OnDisconnected([this]() {
         ESP_LOGI(TAG, "Disconnected from endpoint");

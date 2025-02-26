@@ -3,6 +3,7 @@
 #include "display.h"
 #include "system_info.h"
 #include "ml307_ssl_transport.h"
+#include "ec800_ssl_transport.h"
 #include "audio_codec.h"
 #include "mqtt_protocol.h"
 #include "websocket_protocol.h"
@@ -296,10 +297,10 @@ void Application::Start() {
     opus_decode_sample_rate_ = codec->output_sample_rate();
     opus_decoder_ = std::make_unique<OpusDecoderWrapper>(opus_decode_sample_rate_, 1);
     opus_encoder_ = std::make_unique<OpusEncoderWrapper>(16000, 1, OPUS_FRAME_DURATION_MS);
-    // For ML307 boards, we use complexity 5 to save bandwidth
+    // For ML307 boards or EC800 boards, we use complexity 5 to save bandwidth
     // For other boards, we use complexity 3 to save CPU
-    if (board.GetBoardType() == "ml307") {
-        ESP_LOGI(TAG, "ML307 board detected, setting opus encoder complexity to 5");
+    if (board.GetBoardType() == "ml307" || board.GetBoardType() == "ec800") {
+        ESP_LOGI(TAG, "ML307 board or EC800 detected, setting opus encoder complexity to 5");
         opus_encoder_->SetComplexity(5);
     } else {
         ESP_LOGI(TAG, "WiFi board detected, setting opus encoder complexity to 3");

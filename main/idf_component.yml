@@ -17,6 +17,7 @@ dependencies:
   espressif/button: "^3.3.1"
   lvgl/lvgl: "~9.2.2"
   esp_lvgl_port: "~2.4.4"
+  keyspan0114/esp-ec800x: "~1.1.14"
   ## Required IDF version
   idf:
     version: ">=5.3"

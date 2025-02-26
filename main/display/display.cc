@@ -148,7 +148,7 @@ void Display::Update() {
         kDeviceStateListening,
     };
     if (std::find(allowed_states.begin(), allowed_states.end(), device_state) != allowed_states.end()) {
-        icon = board.GetNetworkStateIcon();
+        // icon = board.GetNetworkStateIcon();
         if (network_label_ != nullptr && network_icon_ != icon) {
             DisplayLockGuard lock(this);
             network_icon_ = icon;

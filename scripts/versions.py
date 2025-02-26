@@ -65,6 +65,8 @@ def get_board_name(folder):
     if basename.startswith("v0.3") or basename.startswith("v0.4") or basename.startswith("v0.5") or basename.startswith("v0.6"):
         if "ML307" in basename:
             return "bread-compact-ml307"
+        elif "EC800" in basename:
+            return "bread-compact-ec800"
         elif "WiFi" in basename:
             return "bread-compact-wifi"
         elif "KevinBox1" in basename:
